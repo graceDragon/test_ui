@@ -1,0 +1,51 @@
+# -*- coding:utf-8 -*-
+import os
+import time
+from settings import BASE_PATH
+
+
+class Appium():
+    def __init__(self):
+        print 'start appium....'
+        # pass
+
+    def start_appium(self, path):  # 启动appium
+        os.system(path)
+        # os.system("C:\\JKS\\workspace\\myfen-android\\gitcode\\meiyifen\\config\\appium_start_mf3.bat")
+        print "启动Appium..."
+        print "等待启动完成..."
+        time.sleep(10)
+        print "开始执行脚本..."
+
+    def stop_appium(self, port):  # 杀死appium
+        dos = 'netstat -aon|findstr ' + port
+        a = os.popen(dos).readline()
+        try:
+            a = a.split()[4]
+        except:
+            pass
+        cmd = 'taskkill /f /pid ' + a
+        print cmd
+        os.system(cmd)
+
+    def appium(self, port, path):
+        self.stop_appium(port)
+        time.sleep(3)
+        self.start_appium(path)
+
+    # 智寓app
+    def appium_zhiyu(self):
+        port = "4723"
+        pt = os.path.join(BASE_PATH, 'config', 'appium_start.bat')
+        print 'bat路径：', pt
+        self.appium(port, pt)
+
+
+
+
+
+
+
+
+
+
