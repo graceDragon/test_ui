@@ -10,7 +10,6 @@ from zhiyu_app.test_suite import suite_zhiyu_app
 
 
 if __name__ == '__main__':
-    # appium_start.Appium().appium_youli()
     # 按日期新建文件夹
     dir_day = time.strftime('%Y%m%d', time.localtime(time.time()))
     dir_path = os.path.join(BASE_PATH, 'reports\html_report', dir_day)
@@ -31,6 +30,7 @@ if __name__ == '__main__':
         description=u'测试报告'
     )
     # """
+    appium_start.AppiumStart().appium_youli()
     # 加appium命令行启动，加app和web的判断执行
     # runner.run(suite_zhiyu_web.suite)
     runner.run(suite_zhiyu_app.suite)

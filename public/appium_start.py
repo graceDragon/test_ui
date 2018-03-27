@@ -1,10 +1,10 @@
 # -*- coding:utf-8 -*-
 import os
 import time
-from config.settings import BASE_PATH
+from config.settings import BASE_PATH_BAT
 
 
-class Appium(object):
+class AppiumStart:
     def __init__(self):
         print 'start appium....'
         # pass
@@ -35,7 +35,7 @@ class Appium(object):
 
     def appium_youli(self):
         port = "4723"
-        pt = os.path.join(BASE_PATH, 'config/bat/appium_start_youli.bat')
+        pt = os.path.join(BASE_PATH_BAT, 'appium_start_youli.bat')
         print 'bat路径：', pt
         self.appium(port, pt)
 
