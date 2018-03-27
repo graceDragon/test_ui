@@ -12,7 +12,7 @@ from time import sleep
 from PIL import Image
 import pytesseract
 from selenium.webdriver.common.action_chains import ActionChains
-from appium.webdriver.mobilecommand import MobileCommand
+# from appium.webdriver.mobilecommand import MobileCommand
 
 
 class PublicMethod(object):

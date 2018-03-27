@@ -9,9 +9,9 @@ import MySQLdb
 import pytesseract
 import re
 from PIL import Image
-from appium.webdriver.mobilecommand import MobileCommand
+from appium_start.webdriver.mobilecommand import MobileCommand
 from public import saveScreen
-from appium import webdriver
+from appium_start import webdriver
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
