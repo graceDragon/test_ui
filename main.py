@@ -10,7 +10,7 @@ from zhiyu_app.test_suite import suite_zhiyu_app
 
 
 if __name__ == '__main__':
-    # 按日期新建文件夹
+    # 按日期新建文件夹1
     dir_day = time.strftime('%Y%m%d', time.localtime(time.time()))
     dir_path = os.path.join(BASE_PATH, 'reports\html_report', dir_day)
     # 按精确时间命名html文件
