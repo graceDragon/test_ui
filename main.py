@@ -8,6 +8,7 @@ from public import appium_start
 from config.configEmail import MyEmail
 from zhiyu_web.test_suite import suite_zhiyu_web
 from zhiyu_app.test_suite import suite_zhiyu_app
+from youli_app.test_suite import suite_youli_app
 
 
 if __name__ == '__main__':
@@ -37,8 +38,11 @@ if __name__ == '__main__':
         description=u'测试报告'
     )
     # """
-    # runner.run(suite_zhiyu_web.suite)
-    runner.run(suite_zhiyu_app.suite)
+    # if False:
+    if True:
+        runner.run(suite_zhiyu_app.suite)
+    if True:
+        runner.run(suite_youli_app.suite)
     f.close()
     # send test report by email
     send_email = MyEmail.get_email()
