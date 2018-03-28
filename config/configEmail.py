@@ -30,7 +30,8 @@ class Email:
         receiver_online = 'liuyuliang@efang100.com/jihenggang@efang100.com/wangli@efang100.com/wangyueyong@efang100.com'
         # content = localReadConfig.get_email("content")
         # get receiver list
-        EMAIL = 'test'
+        # EMAIL = 'test'
+        EMAIL = 'online'
         try:
             if EMAIL == 'test':
                 self.value = receiver_test
