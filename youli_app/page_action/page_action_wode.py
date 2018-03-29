@@ -35,6 +35,14 @@ class WoDe(object):
     def judge_setting_page(self):
         self.pm.assert_el_by_name(page_wode.setting_title)
 
+    def logout_judge(self):
+        if self.pm.find_element_name(page_wode.wode_login):
+            print '未登录'
+        else:
+            print '退出当前用户！'
+            self.click_setting()
+            self.logout()
+
     def logout(self):
         self.pm.click_by_name(page_wode.setting_logout)
         self.pm.click_by_name(page_wode.confirm)  # 返回到‘我的’首页

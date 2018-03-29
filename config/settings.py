@@ -17,6 +17,10 @@ chrome_driver_path = 'C:\Program Files (x86)\Google\Chrome\Application\chromedri
 
 print BASE_PATH, BASE_PATH_HTML
 
+"""
+---邮件发送给个人还是群组,
+---test代表发送给我自己，online代表发送给测试组
+"""
 # SendEmail = 'test'
 SendEmail = 'online'
 

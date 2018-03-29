@@ -33,6 +33,22 @@ class LogIn(unittest.TestCase):
         self.wode.login_login(data.user, data.pwd_e)
         self.login_page.judge_login_page()
 
+    def test_login_user_long(self):
+        self.home.judge_homepage()
+        self.home.click_tab_wode()
+        self.wode.judge_wode_page()
+        # 判断手机号输入框允许输入最长字符
+        self.wode.logout_judge()
+        self.wode.judge_wode_page()
+        self.wode.click_login()
+        self.login_page.send_keys_user(data.user_01_long)
+        user_read = self.login_page.read_user()
+        print '读取的数据：', user_read
+        if user_read == data.user_01:
+            pass
+        else:
+            assert True is False
+
 
 
 
