@@ -9,7 +9,6 @@ from config.configEmail import MyEmail
 import test_suite
 
 
-
 if __name__ == '__main__':
     # 加appium命令行启动，加app和web的判断执行
     appium_start.AppiumStart().appium_youli()

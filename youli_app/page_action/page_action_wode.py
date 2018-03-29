@@ -55,6 +55,17 @@ class WoDe(object):
                 self.login.login(user, pwd)
         self.home.click_tab_home()  # 回到首页
 
+    def login_login(self, user, pwd):
+        if self.pm.find_element_name(page_wode.wode_login):
+            print "直接登录！"
+        else:
+            print '先退出当前用户！'
+            self.click_setting()
+            self.logout()
+        self.click_login()
+        self.login.login(user, pwd)
+
+
 
 
 
