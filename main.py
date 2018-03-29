@@ -6,9 +6,8 @@ from config.settings import BASE_PATH, BASE_PATH_HTML
 import os
 from public import appium_start
 from config.configEmail import MyEmail
-from zhiyu_web.test_suite import suite_zhiyu_web
-from zhiyu_app.test_suite import suite_zhiyu_app
-from youli_app.test_suite import suite_youli_app
+import test_suite
+
 
 
 if __name__ == '__main__':
@@ -31,18 +30,17 @@ if __name__ == '__main__':
     else:
         os.mkdir(dir_path)
     f = open(filename_path, 'wb')
-    # """
     runner = HTMLTestRunner.HTMLTestRunner(
         stream=f,
         title=u'系统持续集成-功能测试结果',
         description=u'测试报告'
     )
-    # """
     # if False:
-    if True:
-        runner.run(suite_zhiyu_app.suite)
-    if True:
-        runner.run(suite_youli_app.suite)
+    # if True:
+    #     runner.run(suite_zhiyu_app.suite)
+    # if True:
+    #     runner.run(suite_youli_app.suite)
+    runner.run(test_suite.suite)
     f.close()
     # send test report by email
     send_email = MyEmail.get_email()

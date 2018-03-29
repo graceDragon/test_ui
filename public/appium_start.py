@@ -51,3 +51,5 @@ class AppiumStart:
         print 'bat路径：', pt
         self.appium(port, pt)
 
+if __name__ == '__main__':
+    AppiumStart().stop_appium('4723')

@@ -6,9 +6,12 @@ from datetime import timedelta
 import datetime
 import re
 
+
 class Test(unittest.TestCase):
-    def setUp(self):
-        pass
+    # def __init__(self):
+    #     pass
+    # def setUp(self):
+    #     pass
 
     def test01(self):
         d = '2018-02-27'
@@ -36,6 +39,21 @@ class Test(unittest.TestCase):
         str2 = '-'.join(str1_list)
         print str1_list, str1, str2
 
+    def test_write_file(self):
+        print '-------------------'
+        from config import settings
+        f = open(settings.BASE_PATH_HTML, 'r')
+        f1 = f.readline()
+        f.close()
+        ff = open(settings.BASE_PATH_HTML, 'w')
+        ff.write('126')
+        ff.close()
+        fff = open(settings.BASE_PATH_HTML, 'r')
+        fff1 = fff.readline()
+        print f1
+        print '%%%%%%%%%'
+        print fff1
+
 if __name__ == '__main__':
-    Test().test_03()
+    Test().test_write_file()
 
