@@ -17,4 +17,7 @@ chrome_driver_path = 'C:\Program Files (x86)\Google\Chrome\Application\chromedri
 
 print BASE_PATH, BASE_PATH_HTML
 
+# SendEmail = 'test'
+SendEmail = 'online'
+
 

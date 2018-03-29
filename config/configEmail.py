@@ -1,17 +1,13 @@
 # coding:utf-8
 
-import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.image import MIMEImage
 from datetime import datetime
 import threading
 import readConfig as readConfig
-# from Log import MyLog
-import zipfile
-import glob
 from config.settings import BASE_PATH_HTML
+from config.settings import SendEmail
 
 localReadConfig = readConfig.ReadConfig()
 
@@ -30,8 +26,7 @@ class Email:
         receiver_online = 'liuyuliang@efang100.com/jihenggang@efang100.com/wangli@efang100.com/wangyueyong@efang100.com'
         # content = localReadConfig.get_email("content")
         # get receiver list
-        EMAIL = 'test'
-        # EMAIL = 'online'
+        EMAIL = SendEmail
         try:
             if EMAIL == 'test':
                 self.value = receiver_test
