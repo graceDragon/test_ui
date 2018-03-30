@@ -2,11 +2,11 @@
 
 from config import HTMLTestRunner
 import time
-from config.settings import BASE_PATH, BASE_PATH_HTML
+from config.settings import BASE_PATH, BASE_PATH_HTML, SendOnOff
 import os
 from public import appium_start
 from config.configEmail import MyEmail
-import test_suite
+from test_suite import suite
 
 
 if __name__ == '__main__':
@@ -39,13 +39,13 @@ if __name__ == '__main__':
     #     runner.run(suite_zhiyu_app.suite)
     # if True:
     #     runner.run(suite_youli_app.suite)
-    runner.run(test_suite.suite)
+    runner.run(suite)
     f.close()
     # send test report by email
-    send_email = MyEmail.get_email()
-    on_off = 'on'
+    on_off = SendOnOff
     if on_off == 'on':
         print '开始发送邮件...'
+        send_email = MyEmail.get_email()
         send_email.send_email()
         print '邮件发送完成...'
     elif on_off == 'off':

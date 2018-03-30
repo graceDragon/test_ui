@@ -20,8 +20,11 @@ print BASE_PATH, BASE_PATH_HTML
 """
 ---邮件发送给个人还是群组,
 ---test代表发送给我自己，online代表发送给测试组
+---on代表发送邮件，off代表不发送邮件
 """
 # SendEmail = 'test'
 SendEmail = 'online'
+SendOnOff = 'on'
+# SendOnOff = 'off'
 
 
