@@ -1,5 +1,4 @@
 # coding:utf-8
-
 from config import HTMLTestRunner
 import time
 from config.settings import BASE_PATH, BASE_PATH_HTML, SendOnOff
@@ -19,7 +18,7 @@ if __name__ == '__main__':
     # 按精确时间命名html文件
     time_str = time.strftime('%Y%m%d_%H%M%S', time.localtime(time.time()))
     filename = time_str + '.html'
-    filename_path = os.path.join(BASE_PATH, 'reports\html_report', dir_day, filename)
+    filename_path = os.path.join(dir_path, filename)
     # 测试报告路径写入文本
     f_path = open(BASE_PATH_HTML, 'w')
     f_path.write(filename_path)
@@ -34,11 +33,6 @@ if __name__ == '__main__':
         title=u'系统持续集成-功能测试结果',
         description=u'测试报告'
     )
-    # if False:
-    # if True:
-    #     runner.run(suite_zhiyu_app.suite)
-    # if True:
-    #     runner.run(suite_youli_app.suite)
     runner.run(suite)
     f.close()
     # send test report by email

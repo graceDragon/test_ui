@@ -1,7 +1,3 @@
-import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
-
 """
 A TestRunner for use with the Python unit testing framework. It
 generates a HTML report to show the result at a glance.
@@ -18,7 +14,7 @@ The simplest way to use this is to invoke its main method. E.g.
 
 
 For more customization options, instantiates a HTMLTestRunner object.
-HTMLTestRunner is a counterpart to unittest's TextTestRunner. E.g.
+HTMLTestRunner is a counterpart to unittest's TextTestRunner. E.g..
 
     # output to a file
     fp = file('my_report.html', 'wb')
@@ -94,11 +90,11 @@ Version in 0.7.1
 # TODO: color stderr
 # TODO: simplify javascript using ,ore than 1 class in the class attribute?
 
-import datetime
-import StringIO
 import sys
-import time
+import datetime
 import unittest
+
+from io import StringIO
 from xml.sax import saxutils
 
 
@@ -384,7 +380,7 @@ a.popup_link:hover {
 .failCase   { color: #c60; font-weight: bold; }
 .errorCase  { color: #c00; font-weight: bold; }
 .hiddenRow  { display: none; }
-.testcase   { margin-left: 2em; }
+.test_case   { margin-left: 2em; }
 
 
 /* -- ending ---------------------------------------------------------------------- */
@@ -433,20 +429,23 @@ a.popup_link:hover {
 <col align='right' />
 </colgroup>
 <tr id='header_row'>
-    <td>Test Group/Test case</td>
+    <td colspan='2'>Test Group/Test case</td>
     <td>Count</td>
     <td>Pass</td>
     <td>Fail</td>
     <td>Error</td>
     <td>View</td>
+    <td>Screenshot</td>
+
 </tr>
 %(test_list)s
 <tr id='total_row'>
-    <td>Total</td>
+    <td colspan='2'>Total</td>
     <td>%(count)s</td>
     <td>%(Pass)s</td>
     <td>%(fail)s</td>
     <td>%(error)s</td>
+    <td>&nbsp;</td>
     <td>&nbsp;</td>
 </tr>
 </table>
@@ -454,19 +453,22 @@ a.popup_link:hover {
 
     REPORT_CLASS_TMPL = r"""
 <tr class='%(style)s'>
+    <td>%(cid)s</td>
     <td>%(desc)s</td>
     <td>%(count)s</td>
     <td>%(Pass)s</td>
     <td>%(fail)s</td>
     <td>%(error)s</td>
     <td><a href="javascript:showClassDetail('%(cid)s',%(count)s)">Detail</a></td>
+    <td>&nbsp;</td>
 </tr>
 """ # variables: (style, desc, count, Pass, fail, error, cid)
 
 
     REPORT_TEST_WITH_OUTPUT_TMPL = r"""
 <tr id='%(tid)s' class='%(Class)s'>
-    <td class='%(style)s'><div class='testcase'>%(desc)s</div></td>
+    <td  align='center'>%(caseid)s</td>
+    <td class='%(style)s'><div class='test_case'>%(desc)s</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
@@ -485,13 +487,18 @@ a.popup_link:hover {
     <!--css div popup end-->
 
     </td>
+    <td align='center'>
+    <a target="_blank" href="%(image)s" title="%(image)s ">
+    <img src="..\img.png" height=20 width=20 border=0 /></a>
+    </td>
 </tr>
 """ # variables: (tid, Class, style, desc, status)
 
 
     REPORT_TEST_NO_OUTPUT_TMPL = r"""
 <tr id='%(tid)s' class='%(Class)s'>
-    <td class='%(style)s'><div class='testcase'>%(desc)s</div></td>
+    <td class='%(style)s'>case_id</td>
+    <td class='%(style)s'><div class='test_case'>%(desc)s</div></td>
     <td colspan='5' align='center'>%(status)s</td>
 </tr>
 """ # variables: (tid, Class, style, desc, status)
@@ -501,7 +508,13 @@ a.popup_link:hover {
 %(id)s: %(output)s
 """ # variables: (id, output)
 
+    REPORT_TEST_OUTPUT_IMAGE = r"""
+%(screenshot)s
+"""
 
+    REPORT_TEST_OUTPUT_CASEID = r"""
+%(case_id)s
+"""
 
     # ------------------------------------------------------------------------
     # ENDING
@@ -514,6 +527,7 @@ a.popup_link:hover {
 
 TestResult = unittest.TestResult
 
+
 class _TestResult(TestResult):
     # note: _TestResult is a pure representation of results.
     # It lacks the output and reporting ability compares to unittest._TextTestResult.
@@ -525,6 +539,8 @@ class _TestResult(TestResult):
         self.success_count = 0
         self.failure_count = 0
         self.error_count = 0
+        self.image_view = 0
+
         self.verbosity = verbosity
 
         # result is a list of result in 4 tuple
@@ -536,22 +552,23 @@ class _TestResult(TestResult):
         # )
         self.result = []
 
-
     def startTest(self, test):
         TestResult.startTest(self, test)
         # just one buffer for both stdout and stderr
-        self.outputBuffer = StringIO.StringIO()
-        stdout_redirector.fp = self.outputBuffer
-        stderr_redirector.fp = self.outputBuffer
-        self.stdout0 = sys.stdout
-        self.stderr0 = sys.stderr
-        sys.stdout = stdout_redirector
-        sys.stderr = stderr_redirector
+        self.outputBuffer = StringIO()
 
+        # for print in HTMLTestRunner
+        # stdout_redirector.fp = self.outputBuffer
+        # stderr_redirector.fp = self.outputBuffer
+        # self.stdout0 = sys.stdout
+        # self.stderr0 = sys.stderr
+        # sys.stdout = stdout_redirector
+        # sys.stderr = stderr_redirector
 
     def complete_output(self):
         """
-        Disconnect output redirection and return buffer.
+        Disconnect
+        output redirection and return buffer.
         Safe to call multiple times.
         """
         if self.stdout0:
@@ -574,12 +591,13 @@ class _TestResult(TestResult):
         TestResult.addSuccess(self, test)
         output = self.complete_output()
         self.result.append((0, test, output, ''))
-        if self.verbosity > 1:
-            sys.stderr.write('ok ')
-            sys.stderr.write(str(test))
-            sys.stderr.write('\n')
-        else:
-            sys.stderr.write('.')
+
+        # if self.verbosity > 1:
+        #     sys.stderr.write('ok ')
+        #     sys.stderr.write(str(test))
+        #     sys.stderr.write('\n')
+        # else:
+        #     sys.stderr.write('.')
 
     def addError(self, test, err):
         self.error_count += 1
@@ -587,12 +605,13 @@ class _TestResult(TestResult):
         _, _exc_str = self.errors[-1]
         output = self.complete_output()
         self.result.append((2, test, output, _exc_str))
-        if self.verbosity > 1:
-            sys.stderr.write('E  ')
-            sys.stderr.write(str(test))
-            sys.stderr.write('\n')
-        else:
-            sys.stderr.write('E')
+
+        # if self.verbosity > 1:
+        #     sys.stderr.write('E  ')
+        #     sys.stderr.write(str(test))
+        #     sys.stderr.write('\n')
+        # else:
+        #     sys.stderr.write('E')
 
     def addFailure(self, test, err):
         self.failure_count += 1
@@ -600,12 +619,13 @@ class _TestResult(TestResult):
         _, _exc_str = self.failures[-1]
         output = self.complete_output()
         self.result.append((1, test, output, _exc_str))
-        if self.verbosity > 1:
-            sys.stderr.write('F  ')
-            sys.stderr.write(str(test))
-            sys.stderr.write('\n')
-        else:
-            sys.stderr.write('F')
+
+        # if self.verbosity > 1:
+        #     sys.stderr.write('F  ')
+        #     sys.stderr.write(str(test))
+        #     sys.stderr.write('\n')
+        # else:
+        #     sys.stderr.write('F')
 
 
 class HTMLTestRunner(Template_mixin):
@@ -632,7 +652,7 @@ class HTMLTestRunner(Template_mixin):
         test(result)
         self.stopTime = datetime.datetime.now()
         self.generateReport(test, result)
-        print >>sys.stderr, '\nTime Elapsed: %s' % (self.stopTime-self.startTime)
+        # print(sys.stderr, '\nTime Elapsed: %s' % (self.stopTime - self.startTime))
         return result
 
 
@@ -643,7 +663,7 @@ class HTMLTestRunner(Template_mixin):
         classes = []
         for n,t,o,e in result_list:
             cls = t.__class__
-            if not rmap.has_key(cls):
+            if not cls in rmap:
                 rmap[cls] = []
                 classes.append(cls)
             rmap[cls].append((n,t,o,e))
@@ -767,29 +787,37 @@ class HTMLTestRunner(Template_mixin):
         if isinstance(o,str):
             # TODO: some problem with 'string_escape': it escape \n and mess up formating
             # uo = unicode(o.encode('string_escape'))
-            # uo = o.decode('latin-1')
-            uo = o.decode('utf-8')
+            uo = e
         else:
             uo = o
         if isinstance(e,str):
             # TODO: some problem with 'string_escape': it escape \n and mess up formating
             # ue = unicode(e.encode('string_escape'))
-            # ue = e.decode('latin-1')
-            ue = e.decode('utf-8')
+            ue = e
         else:
             ue = e
 
         script = self.REPORT_TEST_OUTPUT_TMPL % dict(
             id = tid,
-            output = saxutils.escape(uo+ue),
+            output = saxutils.escape(uo),
+            # output=saxutils.escape(uo + ue),
         )
-
+        image = self.REPORT_TEST_OUTPUT_IMAGE % dict(
+            screenshot = saxutils.escape(uo)
+            # screenshot = saxutils.escape(uo + ue)
+        )
+        caseid = self.REPORT_TEST_OUTPUT_CASEID % dict(
+            case_id = saxutils.escape(uo)
+            # case_id = saxutils.escape(uo + ue)
+        )
         row = tmpl % dict(
             tid = tid,
             Class = (n == 0 and 'hiddenRow' or 'none'),
             style = n == 2 and 'errorCase' or (n == 1 and 'failCase' or 'none'),
             desc = desc,
             script = script,
+            image = image[image.find("IMAGE:")+6:(int(image.find("PNG"))+3)],
+            caseid = caseid[caseid.find("case"):(int(caseid.find("case"))+9)],
             status = self.STATUS[n],
         )
         rows.append(row)
