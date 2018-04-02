@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>系统持续集成-功能测试结果</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>系统持续集成-功能测试结果</h1>
+<p class='attribute'><strong>Start Time:</strong> 2018-03-30 15:49:00</p>
+<p class='attribute'><strong>Duration:</strong> 0:19:32.220000</p>
+<p class='attribute'><strong>Status:</strong> Pass 3 Failure 1</p>
+
+<p class='description'>测试报告</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>zhiyu_app.test_case.case11_house_signtocheckout_fensan_flow.SignToCheckout</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',1)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sign_checkout</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: 已经登录，无需重新登录。
+600.0 1580.0 600.0 700.0
+300.0 1592.0 300.0 1510.0
+300.0 1592.0 300.0 1510.0
+600.0 1580.0 600.0 700.0
+600.0 1580.0 600.0 700.0
+读取出来的总额： ￥13060.0
+正则之后的数字： [u'13060.0']
+d1的类型： 2018-03-30 &lt;type 'str'&gt;
+date_first的类型： 2018-03-30 &lt;type 'unicode'&gt;
+date_1的类型： 2018-03-30 &lt;type 'unicode'&gt;
+正则之后的数字： [u'13060.00']
+正则之后的数字： [u'60.00']
+正则之后的数字： [u'1000.00']
+正则之后的数字： [u'5500.00']
+正则之后的数字： [u'5500.00']
+正则之后的数字： [u'1000.00']
+600.0 700.0 600.0 1200.0
+房屋名称： 丽新怡园-5-3-4-402
+房屋名称2： 丽新怡园-5-3-4-402
+房屋名称： 丽新怡园-5-3-4-402
+房屋名称2： 丽新怡园-1-1-1-1003-1
+600.0 700.0 600.0 1200.0
+订单金额： ￥13060.00
+正则之后的数字： [u'13060.00']
+处理后的订单金额： 13060.0
+600.0 1500.0 600.0 600.0
+600.0 500.0 600.0 1200.0
+正则之后的数字： [u'13060.00']
+正则之后的数字： [u'13060.00']
+600.0 1500.0 600.0 700.0
+正则之后的数字： [u'13060.00']
+600.0 500.0 600.0 1200.0
+time.struct_time(tm_year=2018, tm_mon=4, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=0, tm_yday=120, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2018-04-30 &lt;type 'datetime.date'&gt;
+time.struct_time(tm_year=2018, tm_mon=4, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=0, tm_yday=120, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2018-04-30 &lt;type 'datetime.date'&gt;
+time.struct_time(tm_year=2018, tm_mon=4, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=0, tm_yday=120, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2018-04-30 &lt;type 'datetime.date'&gt;
+300.0 1600.0 300.0 400.0
+费用结算页，输入金额。
+*****
+text 10
+*****
+300.0 1600.0 300.0 400.0
+正则之后的数字： 2.45
+正则之后的数字： 50.0
+正则之后的数字： 800.0
+正则之后的数字： 5000.0
+正则之后的数字： 5500.0
+正则之后的数字： 1000.0
+正则之后的数字： 0.01
+正则之后的数字： 2750.0
+正则之后的数字： 9597.54
+600.0 700.0 600.0 1200.0
+正则之后的数字： 9597.54
+600.0 1592.0 600.0 1510.0
+600.0 1500.0 600.0 600.0
+正则之后的数字： 9597.54
+600.0 1560.0 600.0 500.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>zhiyu_app.test_case.case12_house_signtocheckout_fensan_flow02.SignToCheckout</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',1)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sign_checkout</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        pass</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: 已经登录，无需重新登录。
+600.0 1592.0 600.0 1510.0
+600.0 1580.0 600.0 700.0
+300.0 1592.0 300.0 1510.0
+300.0 1592.0 300.0 1510.0
+600.0 1580.0 600.0 700.0
+600.0 1580.0 600.0 700.0
+读取出来的总额： ￥35435.0
+正则之后的数字： [u'35435.0']
+d1的类型： 2018-03-30 &lt;type 'str'&gt;
+date_first的类型： 2018-03-30 &lt;type 'unicode'&gt;
+date_1的类型： 2018-03-30 &lt;type 'unicode'&gt;
+700.0 1600.0 700.0 600.0
+time.struct_time(tm_year=2018, tm_mon=6, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=5, tm_yday=181, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2018-06-30 &lt;type 'datetime.date'&gt;
+正则之后的数字： [u'21080.00']
+正则之后的数字： 14355.0
+time.struct_time(tm_year=2018, tm_mon=6, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=5, tm_yday=181, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2018-06-30 &lt;type 'datetime.date'&gt;
+time.struct_time(tm_year=2018, tm_mon=9, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=6, tm_yday=273, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2018-09-30 &lt;type 'datetime.date'&gt;
+正则之后的数字： [u'180.00']
+正则之后的数字： [u'1000.00']
+正则之后的数字： [u'4725.00']
+正则之后的数字： [u'14175.00']
+正则之后的数字： [u'1000.00']
+600.0 1500.0 600.0 1000.0
+正则之后的数字： 180.0
+正则之后的数字： 14175.0
+600.0 700.0 600.0 1200.0
+房屋名称： 丽新怡园-5-3-4-402
+房屋名称2： 丽新怡园-1-1-1-1003-1
+600.0 700.0 600.0 1200.0
+订单金额： ￥21080.00
+正则之后的数字： [u'21080.00']
+处理后的订单金额： 21080.0
+600.0 1500.0 600.0 600.0
+600.0 500.0 600.0 1200.0
+正则之后的数字： [u'21080.00']
+正则之后的数字： [u'21080.00']
+600.0 1500.0 600.0 700.0
+正则之后的数字： [u'21080.00']
+600.0 500.0 600.0 1200.0
+time.struct_time(tm_year=2018, tm_mon=9, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=6, tm_yday=273, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2018-09-30 &lt;type 'datetime.date'&gt;
+time.struct_time(tm_year=2018, tm_mon=9, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=6, tm_yday=273, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2018-09-30 &lt;type 'datetime.date'&gt;
+time.struct_time(tm_year=2018, tm_mon=6, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=5, tm_yday=181, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2018-06-30 &lt;type 'datetime.date'&gt;
+300.0 1600.0 300.0 400.0
+费用结算页，输入金额。
+*****
+text 10
+*****
+300.0 1600.0 300.0 400.0
+正则之后的数字： 2.45
+正则之后的数字： 50.0
+正则之后的数字： 800.0
+正则之后的数字： 5000.0
+正则之后的数字： 4725.0
+正则之后的数字： 1000.0
+正则之后的数字： 0.01
+正则之后的数字： 2362.5
+正则之后的数字： 9210.04
+600.0 700.0 600.0 1200.0
+正则之后的数字： 9210.04
+600.0 1592.0 600.0 1510.0
+600.0 1500.0 600.0 600.0
+正则之后的数字： 9210.04
+600.0 1560.0 600.0 500.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>zhiyu_app.test_case.case13_house_signtocheckout_fensan_flow03.SignToCheckout</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',1)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sign_checkout</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        pass</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: 已经登录，无需重新登录。
+600.0 1592.0 600.0 1510.0
+600.0 1592.0 600.0 1510.0
+600.0 1580.0 600.0 700.0
+300.0 1592.0 300.0 1510.0
+300.0 1592.0 300.0 1510.0
+600.0 1580.0 600.0 700.0
+600.0 1580.0 600.0 700.0
+读取出来的总额： ￥54720.0
+正则之后的数字： [u'54720.0']
+d1的类型： 2018-03-30 &lt;type 'str'&gt;
+date_first的类型： 2018-03-30 &lt;type 'unicode'&gt;
+date_1的类型： 2018-03-30 &lt;type 'unicode'&gt;
+700.0 1600.0 700.0 600.0
+time.struct_time(tm_year=2018, tm_mon=9, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=6, tm_yday=273, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2018-09-30 &lt;type 'datetime.date'&gt;
+正则之后的数字： [u'30360.00']
+正则之后的数字： 24360.0
+time.struct_time(tm_year=2018, tm_mon=9, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=6, tm_yday=273, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2018-09-30 &lt;type 'datetime.date'&gt;
+time.struct_time(tm_year=2019, tm_mon=3, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=5, tm_yday=89, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2019-03-30 &lt;type 'datetime.date'&gt;
+正则之后的数字： [u'360.00']
+正则之后的数字： [u'1000.00']
+正则之后的数字： [u'4000.00']
+正则之后的数字： [u'24000.00']
+正则之后的数字： [u'1000.00']
+600.0 1500.0 600.0 1000.0
+正则之后的数字： 360.0
+正则之后的数字： 24000.0
+600.0 700.0 600.0 1200.0
+房屋名称： 丽新怡园-5-3-4-402
+房屋名称2： 丽新怡园-5-3-4-402
+房屋名称： 丽新怡园-5-3-4-402
+房屋名称2： 丽新怡园-1-1-1-1003-1
+600.0 700.0 600.0 1200.0
+订单金额： ￥30360.00
+正则之后的数字： [u'30360.00']
+处理后的订单金额： 30360.0
+600.0 1500.0 600.0 600.0
+600.0 500.0 600.0 1200.0
+正则之后的数字： [u'30360.00']
+正则之后的数字： [u'30360.00']
+600.0 1500.0 600.0 700.0
+正则之后的数字： [u'30360.00']
+600.0 500.0 600.0 1200.0
+time.struct_time(tm_year=2019, tm_mon=3, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=5, tm_yday=89, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2019-03-30 &lt;type 'datetime.date'&gt;
+time.struct_time(tm_year=2019, tm_mon=3, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=5, tm_yday=89, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2019-03-30 &lt;type 'datetime.date'&gt;
+time.struct_time(tm_year=2018, tm_mon=9, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=6, tm_yday=273, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2018-09-30 &lt;type 'datetime.date'&gt;
+300.0 1600.0 300.0 400.0
+费用结算页，输入金额。
+*****
+text 10
+*****
+300.0 1600.0 300.0 400.0
+正则之后的数字： 2.45
+正则之后的数字： 50.0
+正则之后的数字： 800.0
+正则之后的数字： 5000.0
+正则之后的数字： 4000.0
+正则之后的数字： 1000.0
+正则之后的数字： 0.01
+正则之后的数字： 2000.0
+正则之后的数字： 8847.54
+600.0 700.0 600.0 1200.0
+正则之后的数字： 8847.54
+600.0 1592.0 600.0 1510.0
+600.0 1500.0 600.0 600.0
+正则之后的数字： 8847.54
+600.0 1560.0 600.0 500.0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>zhiyu_app.test_case.case14_house_signtocheckout_jizhong_flow.SignToCheckout</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',1)">Detail</a></td>
+</tr>
+
+<tr id='ft4.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_sign_checkout</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.1')" >
+        fail</a>
+
+    <div id='div_ft4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.1: 已经登录，无需重新登录。
+600.0 1580.0 600.0 700.0
+300.0 1592.0 300.0 1510.0
+300.0 1592.0 300.0 1510.0
+600.0 1580.0 600.0 700.0
+600.0 1580.0 600.0 700.0
+读取出来的总额： ￥21860.0
+正则之后的数字： [u'21860.0']
+d1的类型： 2018-03-30 &lt;type 'str'&gt;
+date_first的类型： 2018-03-30 &lt;type 'unicode'&gt;
+date_1的类型： 2018-03-30 &lt;type 'unicode'&gt;
+正则之后的数字： [u'21860.00']
+正则之后的数字： [u'60.00']
+正则之后的数字： [u'1000.00']
+正则之后的数字： [u'9900.00']
+正则之后的数字： [u'9900.00']
+正则之后的数字： [u'1000.00']
+600.0 700.0 600.0 1200.0
+房屋名称： UI自动化测试-1栋-1-1-1001
+房屋名称2： UI自动化测试-1栋-1-1-1001
+房屋名称： UI自动化测试-1栋-1-1-1001
+房屋名称2： 丽新怡园-1-1-1-1003-1
+600.0 700.0 600.0 1200.0
+订单金额： ￥21860.00
+正则之后的数字： [u'21860.00']
+处理后的订单金额： 21860.0
+600.0 1500.0 600.0 600.0
+600.0 500.0 600.0 1200.0
+正则之后的数字： [u'21860.00']
+正则之后的数字： [u'21860.00']
+600.0 1500.0 600.0 700.0
+正则之后的数字： [u'21860.00']
+600.0 500.0 600.0 1200.0
+time.struct_time(tm_year=2018, tm_mon=4, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=0, tm_yday=120, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2018-04-30 &lt;type 'datetime.date'&gt;
+time.struct_time(tm_year=2018, tm_mon=4, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=0, tm_yday=120, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2018-04-30 &lt;type 'datetime.date'&gt;
+time.struct_time(tm_year=2018, tm_mon=4, tm_mday=30, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=0, tm_yday=120, tm_isdst=-1) &lt;type 'time.struct_time'&gt;
+2018-04-30 &lt;type 'datetime.date'&gt;
+300.0 1600.0 300.0 400.0
+费用结算页，输入金额。
+*****
+text 上次表底:5.0
+*****
+'decimal' codec can't encode characters in position 0-3: invalid decimal Unicode string
+费用结算页，费用输入有误或者压根没输进去！
+*****
+text 上次表底:5.0
+*****
+'decimal' codec can't encode characters in position 0-3: invalid decimal Unicode string
+费用结算页，费用输入有误或者压根没输进去！
+*****
+text 上次表底:5.0
+*****
+'decimal' codec can't encode characters in position 0-3: invalid decimal Unicode string
+费用结算页，费用输入有误或者压根没输进去！
+Traceback (most recent call last):
+  File "D:\auto_test_ui\zhiyu_app\test_case\case14_house_signtocheckout_jizhong_flow.py", line 78, in test_sign_checkout
+    self.checkout.checkout_flow_jizhong(data.item_bed, data.reason_bed, data.room_status)
+  File "D:\auto_test_ui\zhiyu_app\page_action\page_action_checkout.py", line 311, in checkout_flow_jizhong
+    self.add_fee()
+  File "D:\auto_test_ui\zhiyu_app\page_action\page_action_checkout.py", line 130, in add_fee
+    assert True is False
+AssertionError
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>4</td>
+    <td>3</td>
+    <td>1</td>
+    <td>0</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

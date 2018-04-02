@@ -1,6 +1,7 @@
 # coding:utf-8
 import unittest
 from youli_app.test_case import case01_login as youli_login
+from youli_app.test_case import case02_home
 
 from zhiyu_app.test_case import case01_login as zhiyu_login
 from zhiyu_app.test_case import case11_house_signtocheckout_fensan_flow
@@ -20,6 +21,7 @@ suite = unittest.TestSuite()
 # 运行一组case
 # 优粒租房app是测试包
 suite.addTest(unittest.makeSuite(youli_login.LogIn))
+suite.addTest(unittest.makeSuite(case02_home.Home))
 
 # 智寓伙伴app是生产包
 suite.addTest(unittest.makeSuite(zhiyu_login.LogIn))

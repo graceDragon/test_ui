@@ -36,6 +36,15 @@ class Home(object):
     def click_pinpai(self):
         self.pm.click_by_name(page_home.home_pinpai)
 
+    def judge_zhengzu(self):
+        self.pm.assert_el_by_name(page_home.home_zhengzu)
+
+    def judge_hezu(self):
+        self.pm.assert_el_by_name(page_home.home_hezu)
+
+    def judge_pinpai(self):
+        self.pm.assert_el_by_name(page_home.home_pinpai)
+
     def click_more(self):
         self.pm.click_by_id(page_home.home_more)
 
