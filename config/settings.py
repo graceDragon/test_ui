@@ -15,7 +15,8 @@ url_zhiyu_online = 'http://www.efang100.cc'
 
 url_zhiyu_yu_online = 'https://zhiyu.vc'  # 预生产
 
-chrome_driver_path = 'C:\Program Files (x86)\Google\Chrome\Application\chromedriver2.33.exe'
+# chrome_driver_path = 'C:\Program Files (x86)\Google\Chrome\Application\chromedriver2.33.exe'
+chrome_driver_path = 'C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe'
 
 print BASE_PATH, BASE_PATH_HTML
 

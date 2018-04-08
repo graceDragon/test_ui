@@ -25,6 +25,7 @@ class FangYuan(unittest.TestCase):
         # self.fangyuan.read_test()
 
     def test_off_community(self):
+        # 启用/停用社区
         self.fangyuan.close_community(data.user_01, data.pwd_01)
 
     # def test_off_community(self):
