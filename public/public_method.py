@@ -114,8 +114,9 @@ class PublicMethod(object):
             print '没有找到元素：', r
 
     # 鼠标停留在某个元素上
-    def stay_mouse(self, r):
-        ActionChains(self.d).move_to_element(r)
+    def stay_mouse_xpath(self, r):
+        ele = self.d.find_element_by_xpath(r)
+        ActionChains(self.d).move_to_element(ele).perform()
 
     # 鼠标移动
     def move_mouse(self, x, y):
@@ -138,13 +139,21 @@ class PublicMethod(object):
 
     def scrollbar_web(self, r):
         # web页面滚动条
-        # r是滚动的距离
+        # r是滚动的距离 r=10000移动到最底部，r=0移动到顶部
         r = str(r)
-        js = "var q=document.body.scrollTop=" + r
+        browser_name = self.d.name
+        print '浏览器:', browser_name
+        if browser_name == 'chrome':
+            js = "var q=document.body.scrollTop=" + r
+        else:
+            js = "var q=document.documentElement.scrollTop=" + r
         print(js)
+        return self.d.execute_script(js)
+
+    def scrollbar_web_02(self):
+        js = "window.scrollTo(0,0)"
         self.d.execute_script(js)
-        time.sleep(1)
-        self.screen_shot()
+        print 'scroll2'
 
     def read_element_txt_by_name(self, r):
         txt = self.d.find_element_by_name(r).text
@@ -160,6 +169,10 @@ class PublicMethod(object):
 
     def read_element_txt_by_ids(self, r, i):
         txt = self.d.find_elements_by_id(r)[i].text
+        return txt
+
+    def read_element_txt_by_xpath(self, r):
+        txt = self.d.find_element_by_xpath(r).text
         return txt
 
     def read_element_txt(self, r):
@@ -228,6 +241,16 @@ class PublicMethod(object):
 
     def assert_el_by_name(self, r):
         if self.find_element_name(r):
+            pass
+        else:
+            self.screen_shot()
+            print '*******************'
+            print '没有找到元素：', r
+            print '*******************'
+            assert True is False
+
+    def assert_el_by_xpath(self, r):
+        if self.find_element_xpath(r):
             pass
         else:
             self.screen_shot()

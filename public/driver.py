@@ -18,7 +18,7 @@ class Driver(object):
         # 谷歌浏览器
         driver = sw.Chrome(chrome_driver_path)
         # 火狐浏览器
-        # driver = webdriver.Firefox()
+        # driver = sw.Firefox()
         driver.get(url)
         driver.maximize_window()
         driver.implicitly_wait(3)

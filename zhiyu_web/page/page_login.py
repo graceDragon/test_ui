@@ -21,6 +21,8 @@ login_btn_class = 'loginBtn'
 
 forget_pwd_class = 'forgetPass'
 
+logout = '//a[@text="退出"]'
+
 
 
 

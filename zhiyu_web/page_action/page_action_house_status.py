@@ -2,6 +2,7 @@
 
 from ..page.page_house_status_now import *
 from public import public_method
+from time import sleep
 from test_data.data import *
 
 
@@ -11,13 +12,15 @@ class PageActionHouseStatus(object):
 
     def house_status_01(self):
         # 点击 房态-实时房态-集中式房态
-        # self.m.stay_element(house_status_xpath)
-        # self.m.stay_element(house_status_now_xpath)
-        # self.m.stay_element(house_status_concentrate_xpath)
-        self.m.click_element(house_status_xpath)
-        self.m.click_element(house_status_now_xpath)
-        self.m.click_element(house_status_concentrate_xpath)
+        self.m.stay_mouse_xpath(house_status_xpath)
+        self.m.stay_mouse_xpath(house_status_now_xpath)
+        self.m.stay_mouse_xpath(house_status_concentrate_xpath)
+        self.m.click_by_xpath(house_status_concentrate_xpath)
         self.m.move_mouse(100, 100)
+        self.m.change_iframe('fRight')
+        sleep(5)
+        self.m.scrollbar_web(1000)
+        sleep(5)
 
     def house_site_judge(self, r):
         # 判断所在的公寓地址是否正确

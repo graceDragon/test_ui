@@ -23,7 +23,7 @@ class Email:
         sender = 'liuyuliang@efang100.com'
         title = 'UI Test Report'
         receiver_test = 'liuyuliang@efang100.com'
-        receiver_online = 'liuyuliang@efang100.com/jihenggang@efang100.com/wangli@efang100.com/wangyueyong@efang100.com'
+        receiver_online = 'liuyuliang@efang100.com/jihenggang@efang100.com/wangli@efang100.com/wangyueyong@efang100.com/hanyue@efang100.com'
         # content = localReadConfig.get_email("content")
         # get receiver list
         EMAIL = SendEmail

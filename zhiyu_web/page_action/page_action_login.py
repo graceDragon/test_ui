@@ -8,6 +8,7 @@ from public import public_method
 from time import sleep
 from test_data.data import *
 from zhiyu_web.page_action import page_action_home
+from selenium.webdriver import ActionChains
 
 
 class PageActionLogin(object):
@@ -51,9 +52,13 @@ class PageActionLogin(object):
 
     def stay_forget_pwd_btn(self):
         # 鼠标停留在忘记密码按钮上
-        from selenium import webdriver
-        webdriver.ActionChains(self.d).move_to_element('forgetPass')
+        ActionChains(self.d).move_to_element('forgetPass')
         sleep(10)
+
+    def mouse_stay(self,ele):
+        # 鼠标停留在某个元素上
+        ActionChains(self.d).move_to_element(ele).perform()
+        sleep(2)
 
     # 登录
     def login_page_action(self, user, pwd):
@@ -69,11 +74,25 @@ class PageActionLogin(object):
                 pass
             else:
                 # 退出当前帐号重新登录
-                pass
+                self.logout()
+                self.input_user(user)
+                self.input_password(pwd)
+                # self.stay_forget_pwd_btn()
+                self.input_yzm()
+                self.click_login()
+        self.homeAc.judge_home_page()
+        print "登录成功！"
 
     def login_page_action_cookies(self):
         self.d.add_cookie(cookies_dict)
         self.d.refresh()
+
+    def logout(self):
+        self.homeAc.judge_home_page()
+        self.mouse_stay(page_home.home_setting)
+        self.m.click_by_xpath(page_login.logout)
+        self.assert_login_title()
+
 
 
 
