@@ -294,6 +294,15 @@ class CheckOut(object):
         self.click_back()
         self.click_back()  # 两次返回到房态首页
 
+    # 退房流程(简单版)-分散式
+    def checkout_flow_easy02(self, status):
+        self.judge_title()
+        self.click_bill()
+        self.judge_fee_close()
+        self.select_checkout_way()
+        self.checkout_rent_status(status)
+        self.confirm_ren()  # 确认之后回到房态首页
+
     # 退房流程-集中式
     def checkout_flow_jizhong(self, item, reason, status, sign_n=1, rent_n=1,status_jiesuan='1_1', money_tui=6847.49):
         self.judge_title()
@@ -314,6 +323,14 @@ class CheckOut(object):
         # self.swip_screen()
         self.confirm_ren()  # 确认之后回到房态首页
 
+    # 退房流程-集中式
+    def checkout_flow_jizhong_easy(self, status):
+        self.judge_title()
+        self.click_bill()
+        self.judge_fee_close()
+        self.select_checkout_way()
+        self.checkout_rent_status(status)
+        self.confirm_ren()  # 确认之后回到房态首页
 
 
 

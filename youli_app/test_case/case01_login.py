@@ -18,8 +18,19 @@ class LogIn(unittest.TestCase):
 
     def test_login(self):
         self.home.judge_homepage()
-        self.home.click_tab_wode()
-        self.wode.login_judge(data.user, data.pwd)
+        tag_name = self.driver.find_element_by_name('合租').tag_name
+        text = self.driver.find_element_by_name('合租').text
+        # p1 = self.driver.find_element_by_name('合租').get_property()
+        p2 = self.driver.find_element_by_name('合租').get_attribute()
+        print "---------------------"
+        print tag_name
+        print text
+        # print p1
+        # print p2
+        print "---------------------"
+
+        # self.home.click_tab_wode()
+        # self.wode.login_judge(data.user, data.pwd)
 
     def test_login_usererror(self):
         self.home.judge_homepage()

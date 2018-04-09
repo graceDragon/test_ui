@@ -3,6 +3,7 @@
 from zhiyu_app.page import page_house_status
 from public import public_method, input_method, date
 from time import sleep
+import page_action_checkout
 
 
 class HouseStatus(object):
@@ -613,6 +614,11 @@ class HouseStatus(object):
         self.click_title_jizhong()
         self.select_community(community, loudong)
         self.select_house(no)
+        # 如果有退房选项，先执行退房
+        if self.pm.find_element_name('退房'):
+            self.room_checkout()
+            page_action_checkout.CheckOut(self.driver).checkout_flow_jizhong_easy(status='待租')
+            self.select_house(no)
         self.room_sign()
         self.sign_judge()
         self.sign_select_customer(customer)
@@ -659,6 +665,11 @@ class HouseStatus(object):
         self.click_title_jizhong()
         self.select_district_street_fensan(district, street)
         self.select_community_room_fensan(community, room)
+        # 判断没有签约项，先执行退房操作
+        if self.pm.find_element_name('退房'):
+            self.room_checkout()
+            page_action_checkout.CheckOut(self.driver).checkout_flow_easy02(status='待租')
+            self.select_community_room_fensan(community, room)
         self.room_sign()
         self.sign_judge()
         self.sign_select_customer(customer)
