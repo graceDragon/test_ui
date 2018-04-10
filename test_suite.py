@@ -3,6 +3,8 @@ import unittest
 from zhiyu_web.test_case import case_fangyuan
 from youli_app.test_case import case01_login as youli_login
 from youli_app.test_case import case02_home
+from youli_app.test_case import case03_yuyue_flow
+
 from zhiyu_app.test_case import case01_login as zhiyu_login
 from zhiyu_app.test_case import case11_house_signtocheckout_fensan_flow
 from zhiyu_app.test_case import case12_house_signtocheckout_fensan_flow02
@@ -20,11 +22,12 @@ suite = unittest.TestSuite()
 
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # ----------运行一组case----------------
-# 先打开社区（web端启用）
+# 先打开社区（web端启用社区）
 suite.addTest(case_fangyuan.FangYuan('test_on_community'))
 # 优粒租房app用的是测试包
 suite.addTest(unittest.makeSuite(youli_login.LogIn))
 suite.addTest(unittest.makeSuite(case02_home.Home))
+suite.addTest(unittest.makeSuite(case03_yuyue_flow.YuYue))
 # 智寓伙伴app用的是生产包
 suite.addTest(unittest.makeSuite(zhiyu_login.LogIn))
 suite.addTest(unittest.makeSuite(case11_house_signtocheckout_fensan_flow.SignToCheckout))
@@ -33,7 +36,7 @@ suite.addTest(unittest.makeSuite(case13_house_signtocheckout_fensan_flow03.SignT
 suite.addTest(unittest.makeSuite(case14_house_signtocheckout_jizhong_flow.SignToCheckout))
 suite.addTest(unittest.makeSuite(case15_house_signtocheckout_jizhong_flow02.SignToCheckout))
 suite.addTest(unittest.makeSuite(case16_house_signtocheckout_jizhong_flow03.SignToCheckout))
-# 后关闭社区（web端停用）
+# 后关闭社区（web端停用社区）
 suite.addTest(case_fangyuan.FangYuan('test_off_community'))
 
 

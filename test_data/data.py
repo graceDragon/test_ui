@@ -88,6 +88,18 @@ appActivity_zhiyu_test = '.activity.SplashActivity'
 appPackage_zhiyu_online = 'com.ncf.mango_manager'
 appActivity_zhiyu_online = '.activity.SplashActivity'
 
+# --------------优粒租房测试数据----------
+one_house = '1室'
+two_house = '2室'
+mangguo = '芒果公寓'
+address = '区域'
+address_qu_chaoyang = '朝阳区'
+address_jiedao_maizi = '麦子店街道'
+zhuangxiu_haohua = '豪华装修'
+zhuangxiu_jing = '精装修'
+house_name_01 = '芒果公寓·UI自动化-分散式-整租'
+house_name_02 = '芒果公寓·22'
+
 
 
 

@@ -6,6 +6,7 @@ from ..page import page_login
 
 class LogIn(object):
     def __init__(self, driver):
+        # 登录判断在我的里边
         self.driver = driver
         self.pm = public_method.PublicMethod(driver)
 
