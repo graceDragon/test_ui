@@ -160,6 +160,7 @@ class WoDe(object):
     def click_yuyue_all(self):
         self.pm.click_by_name(page_wode.yuyue_all)
 
+    # 未看房
     def click_yuyue_nosee(self):
         self.pm.click_by_name(page_wode.yuyue_seehouse_no)
 
@@ -168,6 +169,11 @@ class WoDe(object):
 
     def click_yuyue_cancelsee(self):
         self.pm.click_by_name(page_wode.yuyue_seehouse_cancel)
+
+    def judge_house(self, r):
+        # self.pm.read_and_judge_element_txt_by_id()
+        pass
+
 
     def click_yuyue_delete(self):
         self.pm.click_by_name(page_wode.yuyue_delete)

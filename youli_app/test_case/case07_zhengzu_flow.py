@@ -1,6 +1,6 @@
 # coding:utf-8
 """
-流程-整租（品牌公寓）-我的预约-取消预约
+流程-整租（分散式-整租）-我的预约-取消预约
 """
 
 import unittest
@@ -10,7 +10,7 @@ from youli_app.page_action import page_action_wode, page_action_home, page_actio
 from youli_app.page_action import page_action_house_detail
 
 
-class YuYue(unittest.TestCase):
+class ZhengZu(unittest.TestCase):
     def setUp(self):
         self.driver = driver.Driver().driver_app_youli()
         self.login = page_action_wode.WoDe(self.driver)
@@ -26,10 +26,8 @@ class YuYue(unittest.TestCase):
         self.home.click_tab_wode()
         self.login.login_judge(data.user, data.pwd)
         self.home.click_zhengzu()
-        self.list.zhengzu_flow(data.house_name_03)
+        self.list.zhengzu_flow(data.house_name_01)
         self.detail.yuyue_page_flow()
-
-
 
 
 if __name__ == '__main__':

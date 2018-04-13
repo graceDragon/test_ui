@@ -6,7 +6,7 @@ from test_data import data
 from youli_app.page_action import page_action_wode, page_action_home
 
 
-class WodeMessage(unittest.TestCase):
+class WodeWaitdo(unittest.TestCase):
     def setUp(self):
         self.driver = driver.Driver().driver_app_youli()
         self.wode = page_action_wode.WoDe(self.driver)
