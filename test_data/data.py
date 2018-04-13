@@ -99,6 +99,9 @@ zhuangxiu_haohua = '豪华装修'
 zhuangxiu_jing = '精装修'
 house_name_01 = '芒果公寓·UI自动化-分散式-整租'
 house_name_02 = '芒果公寓·22'
+house_name_03 = '芒果公寓·UI自动化-集中式-1号楼-1层-1001'
+city_bj = '北京市'
+
 
 
 

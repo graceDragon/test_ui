@@ -24,6 +24,17 @@ class Home(object):
     def click_change_city(self):
         self.pm.click_by_id(page_home.home_change_city)
 
+    def read_city(self):
+        city = self.pm.read_element_txt_by_id(page_home.home_change_city)
+        return city
+
+    def judge_city(self, r):
+        if self.pm.read_and_judge_element_txt_by_id(page_home.home_change_city, r):
+            pass
+        else:
+            print "定位异常"
+            assert True is False
+
     def click_search(self):
         self.pm.click_by_id(page_home.home_search)
 

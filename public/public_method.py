@@ -189,23 +189,25 @@ class PublicMethod(object):
             print '没有找到元素：', r
         return txt
 
-    def read_and_judge_element_txt_by_name(self, r, i):
-        txt = self.d.find_element_by_name(r).text
-        if txt == i:
-            print '元素信息正确：', txt, i
+    def read_and_judge_element_txt_by_name(self, e, r):
+        txt = self.d.find_element_by_name(e).text
+        if txt == r:
+            print '元素信息正确：', txt, r
             return True
         else:
-            print '元素信息不不不正确：', txt, i
+            print '元素信息不不不正确：', txt, r
             self.screen_shot()
             return False
 
-    def read_and_judge_element_txt_by_id(self, r, i):
-        txt = self.d.find_element_by_id(r).text
-        if txt == i:
-            print '元素信息正确：', txt, i
+    def read_and_judge_element_txt_by_id(self, e, r):
+        txt = self.d.find_element_by_id(e).text
+        # unicode类型转换成str类型
+        txt = txt.encode(encoding='utf-8')
+        if txt == r:
+            print '元素信息正确：', txt, r
             return True
         else:
-            print '元素信息不不不正确：', txt, i
+            print '元素信息不不不正确：', txt, '!=', r
             self.screen_shot()
             return False
 

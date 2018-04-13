@@ -1,6 +1,6 @@
 # coding:utf-8
 """
-预约流程-整租
+流程-整租（品牌公寓）-我的预约-取消预约
 """
 
 import unittest
@@ -26,10 +26,10 @@ class YuYue(unittest.TestCase):
         self.home.click_tab_wode()
         self.login.login_judge(data.user, data.pwd)
         self.home.click_zhengzu()
-        self.list.fangyuan_list_flow(data.two_house, data.one_house, data.mangguo, data.address,
-                                     data.address_qu_chaoyang, data.address_jiedao_maizi, data.zhuangxiu_haohua,
-                                     data.house_name_02)
+        self.list.zhengzu_flow(data.house_name_03)
         self.detail.yuyue_page_flow()
+
+
 
 
 if __name__ == '__main__':

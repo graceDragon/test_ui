@@ -113,6 +113,7 @@ class CheckOut(object):
         tag = 0
         sleep(1)
         for i in range(3):
+            self.pm.click_by_ids(self.pc.checkout_fee, 0)
             self.pm.send_keys_by_ids(self.pc.checkout_fee, 10, 0)
             text = self.pm.read_element_txt_by_ids(self.pc.checkout_fee, 0)
             print '*****'
@@ -133,8 +134,11 @@ class CheckOut(object):
         # else:
         #     print '费用结算页，费用输入有误或者压根没输进去！'
         #     assert True is False
+        self.pm.click_by_ids(self.pc.checkout_fee, 1)
         self.pm.send_keys_by_ids(self.pc.checkout_fee, -50, 1)
+        self.pm.click_by_ids(self.pc.checkout_fee, 2)
         self.pm.send_keys_by_ids(self.pc.checkout_fee, -800, 2)
+        self.pm.click_by_ids(self.pc.checkout_fee, 3)
         self.pm.send_keys_by_ids(self.pc.checkout_fee, -5000, 3)
 
     # 费用结算页-费用检查1期1付

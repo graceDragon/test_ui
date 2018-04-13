@@ -142,6 +142,10 @@ class FangyuanList(object):
         self.click_confirm()
         self.find_click_fangyuan(house)
 
+    def zhengzu_flow(self, house):
+        self.judge_fangyuanlist_page()
+        self.find_click_fangyuan(house)
+
 
 
 
