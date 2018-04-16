@@ -13,6 +13,7 @@ from PIL import Image
 import pytesseract
 from selenium.webdriver.common.action_chains import ActionChains
 # from appium.webdriver.mobilecommand import MobileCommand
+import MySQLdb
 
 
 class PublicMethod(object):
@@ -423,6 +424,54 @@ class PublicMethod(object):
     # 返回frame
     def back_iframe(self):
         self.d.switch_to.default_content()
+
+
+class DataBase(object):
+    def __init__(self):
+        pass
+
+    def database_connect(self, host, user, pwd, database, sql):
+        try:
+            # connect to DB
+            connect = MySQLdb.Connect(host=host, user=user, passwd=pwd, db=database, charset='utf8')
+            # create cursor
+            cursor = connect.cursor()
+            print "connect to DB successfully!"
+            cursor.execute(sql)
+            connect.commit()
+            time.sleep(3)
+            # get one resule after execute sql
+            try:
+                value = cursor.fetchone()
+                print "数据库里读取的结果", type(value), value
+                return value
+            except Exception as e:
+                print '获取数据库信息失败：', e
+                # assert True is False
+            finally:
+                connect.close()
+                print "close DataBase!"
+        except Exception as e:
+            print "connect to DB failed!"
+            print u"错误信息：", e
+            assert True is False
+
+    def connect_database_youli(self):
+        from test_data import data
+        code = self.database_connect(data.db_host, data.db_username, data.db_password,
+                                     data.db_mango_test, data.sql_yzm)
+        print "获取到的数据：", code
+        return code
+
+
+
+
+
+
+
+
+
+
 
 
 

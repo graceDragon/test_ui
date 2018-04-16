@@ -103,7 +103,16 @@ house_name_03 = '芒果公寓·UI自动化-集中式-1号楼-1层-1001'
 city_bj = '北京市'
 
 
-
+"""
+数据库[DATABASE]
+"""
+db_host = '47.93.32.103'
+db_username = 'zhiyudev'
+db_password = 'Zhiyu2018'
+db_port = 3306
+db_mango_test = 'mango_test'
+db_zhiyu_test = 'zhiyu_test'
+sql_yzm = "SELECT CODE FROM sms_code WHERE mobile='18211078892' ORDER BY id DESC;"
 
 
 

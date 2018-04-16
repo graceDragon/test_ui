@@ -99,7 +99,7 @@ class SignToCheckout(unittest.TestCase):
         # 退房完成
 
 if __name__ == "__main__":
-    SignToCheckout().test_sign_checkout()
+    unittest.main()
 
 
 

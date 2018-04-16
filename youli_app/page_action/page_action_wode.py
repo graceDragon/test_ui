@@ -2,16 +2,14 @@
 
 from public import public_method
 from ..page import page_wode
-from .page_action_login import LogIn
 from .page_action_home import Home
 
 
 class WoDe(object):
     def __init__(self, driver):
         self.driver = driver
-        self.pm = public_method.PublicMethod(driver)
-        self.login = LogIn(driver)
-        self.home = Home(driver)
+        self.pm = public_method.PublicMethod(self.driver)
+        self.home = Home(self.driver)
 
     def click_confirm(self):
         self.pm.click_by_name(page_wode.confirm)
@@ -116,32 +114,6 @@ class WoDe(object):
         self.pm.click_by_name(page_wode.setting_logout)
         self.pm.click_by_name(page_wode.confirm)  # 返回到‘我的’首页
 
-    def login_judge(self, user, pwd):
-        if self.pm.find_element_name(page_wode.wode_login):
-            print "去登录！"
-            self.click_login()
-            self.login.login(user, pwd)
-        else:
-            if self.check_user(user):
-                pass
-            else:
-                print '退出当前用户！'
-                self.click_setting()
-                self.logout()
-                self.click_login()
-                self.login.login(user, pwd)
-        self.home.click_tab_home()  # 回到首页
-
-    def login_login(self, user, pwd):
-        if self.pm.find_element_name(page_wode.wode_login):
-            print "直接登录！"
-        else:
-            print '先退出当前用户！'
-            self.click_setting()
-            self.logout()
-        self.click_login()
-        self.login.login(user, pwd)
-
     # --------------------待办事项------------------------
     def judge_waitdo_title(self):
         self.pm.assert_el_by_name(page_wode.waitdo_title)
@@ -173,7 +145,6 @@ class WoDe(object):
     def judge_house(self, r):
         # self.pm.read_and_judge_element_txt_by_id()
         pass
-
 
     def click_yuyue_delete(self):
         self.pm.click_by_name(page_wode.yuyue_delete)

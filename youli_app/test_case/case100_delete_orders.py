@@ -7,12 +7,13 @@ import unittest
 from public import driver
 from test_data import data
 from youli_app.page_action import page_action_wode, page_action_home, page_action_fangyuan_list
+from youli_app.page_action import page_action_login
 
 
 class YuYue(unittest.TestCase):
     def setUp(self):
         self.driver = driver.Driver().driver_app_youli()
-        self.login = page_action_wode.WoDe(self.driver)
+        self.login = page_action_login.LogIn(self.driver)
         self.home = page_action_home.Home(self.driver)
         self.wode = page_action_wode.WoDe(self.driver)
 
