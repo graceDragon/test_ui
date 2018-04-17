@@ -27,6 +27,9 @@ class LogIn(object):
     def click_regist(self):
         self.pm.click_by_name(page_login.login_register)
 
+    def click_forgetpwd(self):
+        self.pm.click_by_name(page_login.login_forgetpwd)
+
     def login(self, user, pwd):
         self.pm.send_keys_by_id(page_login.login_user, user)
         self.pm.send_keys_by_id(page_login.login_pwd, pwd)

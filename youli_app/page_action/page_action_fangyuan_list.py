@@ -2,6 +2,7 @@
 
 from public import public_method
 from ..page import page_fangyuan_list
+from test_data import data
 
 
 class FangyuanList(object):
@@ -145,6 +146,37 @@ class FangyuanList(object):
     def zhengzu_flow(self, house):
         self.judge_fangyuanlist_page()
         self.find_click_fangyuan(house)
+
+    def judge_zhengzu_list(self):
+        tag = 0
+        if self.pm.read_and_judge_element_txt_by_id(page_fangyuan_list.choose_limit, data.house_zheng):
+            tag = 1
+        else:
+            print '列表异常！整租列表显示合租！'
+            assert True is False
+        if tag == 1:
+            for i in range(5):
+                if self.pm.find_element_name(data.house_he):
+                    print "列表异常，整租列表发现合租房源！"
+                    assert True is False
+                else:
+                    self.pm.screenSlide_by_zuobiao(600.0, 1500.0, 600.0, 700.0, 1080.0, 1920.0)
+
+    def judge_hezu_list(self):
+        tag = 0
+        if self.pm.read_and_judge_element_txt_by_id(page_fangyuan_list.choose_limit, data.house_he):
+            tag = 1
+        else:
+            print '列表异常！合租列表显示整租！'
+            assert True is False
+        if tag == 1:
+            for i in range(5):
+                if self.pm.find_element_name(data.house_zheng):
+                    print "列表异常，合租列表发现整租房源！"
+                    assert True is False
+                else:
+                    self.pm.screenSlide_by_zuobiao(600.0, 1500.0, 600.0, 700.0, 1080.0, 1920.0)
+
 
 
 

@@ -8,6 +8,9 @@ from youli_app.test_case import case04_wode_message
 from youli_app.test_case import case05_wode_waitdo
 from youli_app.test_case import case06_location
 from youli_app.test_case import case07_zhengzu_flow
+from youli_app.test_case import case08_regist
+from youli_app.test_case import case09_forgetpwd
+from youli_app.test_case import case10_houselist
 
 from zhiyu_app.test_case import case01_login as zhiyu_login
 from zhiyu_app.test_case import case11_house_signtocheckout_fensan_flow
@@ -36,6 +39,9 @@ suite.addTest(unittest.makeSuite(case04_wode_message.WodeMessage))
 suite.addTest(unittest.makeSuite(case05_wode_waitdo.WodeWaitdo))
 suite.addTest(unittest.makeSuite(case06_location.Location))
 suite.addTest(unittest.makeSuite(case07_zhengzu_flow.ZhengZu))
+suite.addTest(unittest.makeSuite(case08_regist.Regist))
+suite.addTest(unittest.makeSuite(case09_forgetpwd.ForgetPwd))
+suite.addTest(unittest.makeSuite(case10_houselist.HouseList))
 
 # ---------智寓伙伴app-------用的是生产包
 suite.addTest(unittest.makeSuite(zhiyu_login.LogIn))

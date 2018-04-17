@@ -56,8 +56,8 @@ class PublicMethod(object):
     def click_by_name(self, r):
         self.d.find_element_by_name(r).click()
 
-    def click_by_names(self, r, i):
-        self.d.find_elements_by_name(r)[i].click()
+    def click_by_names(self, e, i):
+        self.d.find_elements_by_name(e)[i].click()
 
     def click_by_id(self, r):
         self.d.find_element_by_id(r).click()
@@ -83,14 +83,14 @@ class PublicMethod(object):
         else:
             print '没有找到元素：', r
 
-    def send_keys_by_name(self, r, key):
-        self.d.find_element_by_name(r).send_keys(key)
+    def send_keys_by_name(self, e, key):
+        self.d.find_element_by_name(e).send_keys(key)
 
     def send_keys_by_names(self, r, i, j):
         self.d.find_elements_by_name(r)[j].send_keys(i)
 
-    def send_keys_by_id(self, r, key):
-        self.d.find_element_by_id(r).send_keys(key)
+    def send_keys_by_id(self, e, key):
+        self.d.find_element_by_id(e).send_keys(key)
 
     def send_keys_by_ids(self, r, i, j):
         self.d.find_elements_by_id(r)[j].click()
@@ -434,32 +434,35 @@ class DataBase(object):
         try:
             # connect to DB
             connect = MySQLdb.Connect(host=host, user=user, passwd=pwd, db=database, charset='utf8')
-            # create cursor
-            cursor = connect.cursor()
             print "connect to DB successfully!"
+            # create cursor，创建一个游标对象
+            cursor = connect.cursor()
             cursor.execute(sql)
-            connect.commit()
+            connect.commit()  # 提交操作
             time.sleep(3)
             # get one resule after execute sql
             try:
                 value = cursor.fetchone()
+                cursor.close()  # 关闭游标
+                # print value
+                # value = value[0]
                 print "数据库里读取的结果", type(value), value
                 return value
             except Exception as e:
                 print '获取数据库信息失败：', e
                 # assert True is False
             finally:
-                connect.close()
+                connect.close()  # 关闭连接
                 print "close DataBase!"
         except Exception as e:
             print "connect to DB failed!"
             print u"错误信息：", e
             assert True is False
 
-    def connect_database_youli(self):
+    def connect_database_youli(self, sql):
         from test_data import data
         code = self.database_connect(data.db_host, data.db_username, data.db_password,
-                                     data.db_mango_test, data.sql_yzm)
+                                     data.db_mango_test, sql)
         print "获取到的数据：", code
         return code
 

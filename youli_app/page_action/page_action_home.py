@@ -56,12 +56,46 @@ class Home(object):
     def judge_pinpai(self):
         self.pm.assert_el_by_name(page_home.home_pinpai)
 
+    def judge_newhouse(self):
+        self.pm.assert_el_by_name(page_home.home_newhouse)
+
     def click_more(self):
         self.pm.click_by_id(page_home.home_more)
 
     def click_lookmore(self):
         self.pm.click_by_id(page_home.home_look_more)
 
+    def judge_youxuanhouse(self):
+        tag = 0
+        for i in range(5):
+            if self.pm.find_element_name(page_home.home_youxuan):
+                self.pm.assert_el_by_name(page_home.home_youxuan)
+                tag = 1
+                break
+            else:
+                self.pm.screenSlide_by_zuobiao(600.0, 1500.0, 600.0, 700.0, 1080.0, 1920.0)
+        if tag == 0:
+            assert True is False
+
+    def click_duwei(self):
+        for i in range(7):
+            self.pm.screenSlide_by_zuobiao(600.0, 1500.0, 600.0, 700.0, 1080.0, 1920.0)
+        self.pm.click_by_names(page_home.home_duwei, -1)
+
+    def click_subway(self):
+        while not self.pm.find_element_name(page_home.home_subway):
+            self.pm.screenSlide_by_zuobiao(600.0, 1500.0, 600.0, 700.0, 1080.0, 1920.0)
+        self.pm.click_by_name(page_home.home_subway)
+
+    def click_south(self):
+        while not self.pm.find_element_name(page_home.home_south):
+            self.pm.screenSlide_by_zuobiao(600.0, 1500.0, 600.0, 700.0, 1080.0, 1920.0)
+        self.pm.click_by_name(page_home.home_south)
+
+    def click_jingzhuang(self):
+        while not self.pm.find_element_name(page_home.home_jingzhuang):
+            self.pm.screenSlide_by_zuobiao(600.0, 1500.0, 600.0, 700.0, 1080.0, 1920.0)
+        self.pm.click_by_name(page_home.home_jingzhuang)
 
 
 

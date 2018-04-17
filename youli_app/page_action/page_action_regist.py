@@ -21,8 +21,8 @@ class Regist(object):
     def click_get_code(self):
         self.pm.click_by_name(page_regist.re_get_code)
 
-    def input_code(self):
-        code = self.db.connect_database_youli()
+    def input_code(self, sql):
+        code = self.db.connect_database_youli(sql)
         self.pm.send_keys_by_name(page_regist.re_input_code, code)
 
     def input_pwd(self, pwd):
@@ -44,11 +44,11 @@ class Regist(object):
     def check_pact(self):
         self.pm.click_by_id(page_regist.re_pact)
 
-    def regist_flow(self, user, pwd):
+    def regist_flow(self, user, pwd, sql):
         self.judge_regist_page()
         self.input_phone(user)
         self.click_get_code()
-        self.input_code()
+        self.input_code(sql)
         self.input_pwd(pwd)
         self.click_pwd_see()
         self.pm.read_and_judge_element_txt_by_id(page_regist.re_input_pwd, pwd)
