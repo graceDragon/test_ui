@@ -16,7 +16,7 @@ class WodeWaitdo(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-    def test_message(self):
+    def test_waitdo(self):
         self.home.judge_homepage()
         self.home.click_tab_wode()
         self.wode.judge_wode_page()

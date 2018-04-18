@@ -26,7 +26,7 @@ class ForgetPwd(unittest.TestCase):
         self.login.judge_login_page()
         self.login.click_forgetpwd()
         self.forgetpwd.forgetpwd_flow(data.user, data.sql_yzm, data.pwd)
-        self.login.judge_login_page()
+        # self.login.judge_login_page()
 
 
 if __name__ == '__main__':

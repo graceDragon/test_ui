@@ -21,7 +21,7 @@ class ZhengZu(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-    def test_yuyue_flow(self):
+    def test_zhengzu_flow(self):
         self.home.judge_homepage()
         self.home.click_tab_wode()
         self.login.login_judge(data.user, data.pwd)

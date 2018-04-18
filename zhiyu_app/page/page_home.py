@@ -9,7 +9,7 @@
 # tab_expire = '到期'
 # tab_repair = '维修'
 # tab_book = '预约'
-home_notice = 'iv_notice_logo'  # 公告
+home_notice = 'iv_notice_logo'  # 首页公告id
 home_cuijiao = '费用催缴'
 home_chaobiao = '周期抄表'
 home_daizu = '到期待租'
