@@ -15,7 +15,7 @@ class Location(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-    def test_message(self):
+    def test_location(self):
         self.home.judge_homepage()
         self.home.click_change_city()
         self.location.judge_title()

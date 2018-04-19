@@ -242,6 +242,10 @@ class PublicMethod(object):
             self.screen_shot()
             return False
 
+    def assert_true_is_false(self):
+        self.screen_shot()
+        assert True is False
+
     def assert_el_by_name(self, r):
         if self.find_element_name(r):
             pass

@@ -22,7 +22,16 @@ class LogIn(object):
         return user_read
 
     def login(self, user, pwd):
-        self.pm.send_keys_by_id(self.pl.login_user, user)
+        tag = 0
+        for i in range(3):
+            if self.pm.read_and_judge_element_txt_by_id(self.pl.login_user, user):
+                tag = 1
+                break
+            else:
+                self.pm.send_keys_by_id(self.pl.login_user, user)
+        if tag == 0:
+            print "登录输入phone异常！"
+            self.pm.assert_true_is_false()
         self.pm.send_keys_by_id(self.pl.login_pwd, pwd)
         # 点掉虚拟键盘
         self.pm.screenSlide_by_zuobiao(300.0, 300.0, 300.0, 300.0, 1080.0, 1920.0)
