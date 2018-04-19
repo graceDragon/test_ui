@@ -154,6 +154,68 @@ class WoDe(object):
         while self.pm.find_element_name(page_wode.yuyue_delete):
             self.click_yuyue_delete()
 
+    # --------------------维修记录------------------------
+    def judge_repair_page(self):
+        self.pm.assert_el_by_name(page_wode.repair_title)
+
+    def click_add_repair(self):
+        self.pm.click_by_name(page_wode.repair_add)
+
+    def click_repair_all(self):
+        self.pm.click_by_name(page_wode.repair_all)
+
+    def click_repair_noaccept(self):
+        self.pm.click_by_name(page_wode.repair_no_accept)
+
+    def click_repair_yetaccept(self):
+        self.pm.click_by_name(page_wode.repair_yet_accept)
+
+    def click_repair_waitpay(self):
+        self.pm.click_by_name(page_wode.repair_wait_pay)
+
+    def click_repair_yetpay(self):
+        self.pm.click_by_name(page_wode.repair_yet_pay)
+
+    def click_repair_finish(self):
+        self.pm.click_by_name(page_wode.repair_finish)
+
+    def click_repair_close(self):
+        self.pm.click_by_name(page_wode.repair_close)
+
+    # 新增维修title
+    def judge_add_repair_title(self):
+        self.pm.assert_el_by_name(page_wode.repair_add_title)
+
+    def click_repair_selecthouse(self):
+        self.pm.click_by_name(page_wode.repair_add_selecthouse)
+
+    def click_repair_add(self):
+        self.pm.click_by_name(page_wode.repair_add_add)
+
+    def click_repair_delete(self):
+        self.pm.click_by_name(page_wode.repair_delete_repair)
+
+    def click_repair_what(self):
+        self.pm.click_by_name(page_wode.repair_add_repairwhat)
+
+    def input_repair_detail(self, r):
+        self.pm.send_keys_by_id(page_wode.repair_add_repairdetail, r)
+
+    def click_repair_pic(self):
+        self.pm.click_by_id(page_wode.repair_add_repairpic)
+
+    def click_repair_pic_select(self):
+        self.pm.click_by_id(page_wode.repair_add_repairpic_select)
+
+    def click_repair_pic_ok(self):
+        self.pm.click_by_id(page_wode.repair_add_repairpic_ok)
+
+    def click_repair_confirm(self):
+        self.pm.click_by_name(page_wode.repair_add_confirm)
+
+
+
+
 
 
 

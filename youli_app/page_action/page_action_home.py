@@ -12,6 +12,9 @@ class Home(object):
     def judge_homepage(self):
         self.pm.assert_el_by_name(page_home.home_newhouse)
 
+    def judge_tab_home(self):
+        self.pm.assert_el_by_name(page_home.home_tab_home)
+
     def click_tab_home(self):
         self.pm.click_by_name(page_home.home_tab_home)
 

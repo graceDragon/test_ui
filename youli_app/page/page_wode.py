@@ -61,6 +61,29 @@ yuyue_seehouse_yet = '已看房'
 yuyue_seehouse_cancel = '已取消'
 yuyue_delete = '删除'
 
+# 自助维修
+repair_title = '维修记录'
+repair_add = '新增维修'
+repair_all = '全部'
+repair_no_accept = '未受理'
+repair_yet_accept = '已受理'
+repair_wait_pay = '待付款'
+repair_yet_pay = '已付款'
+repair_finish = '已完成'
+repair_close = '已关闭'
+repair_no = 'tv_order_no'  # 维修编号
+repair_room_name = 'tv_room_name'
+repair_add_title = '新增维修'  # 新增维修title
+repair_add_selecthouse = '*选择房间'
+repair_add_add = '新增'
+repair_add_repairwhat = '*维修项目'
+repair_add_repairdetail = 'et_input'
+repair_add_repairpic = 'iv_first'
+repair_add_repairpic_select = 'check'
+repair_add_repairpic_ok = 'picture_tv_ok'
+repair_delete_repair = '删除'
+repair_add_confirm = '提交'
+
 
 
 

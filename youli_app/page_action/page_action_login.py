@@ -59,6 +59,7 @@ class LogIn(object):
                 self.wode.logout()
                 self.wode.click_login()
                 self.login(user, pwd)
+        self.home.judge_tab_home()  # 判断home控件
         self.home.click_tab_home()  # 回到首页
 
     # 启动app到登录的过程
