@@ -59,6 +59,9 @@ rent_time_12 = 12
 before_day_1 = 1  # 提前几天交房租
 money_01 = 1000
 
+# 费用
+fee_1000 = 1000
+
 # 退房维修选项
 item = u'冰箱'
 item_bed = u'床'

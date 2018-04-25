@@ -115,7 +115,7 @@ class FangyuanList(object):
 
     # 滑动屏幕直到找到这个房源
     def find_click_fangyuan(self, r):
-        for i in range(5):
+        for i in range(10):
             house_name = self.pm.read_element_txt_by_ids(page_fangyuan_list.fangyuan_name, -1)
             if self.pm.find_element_name(r):
                 self.pm.click_by_name(r)

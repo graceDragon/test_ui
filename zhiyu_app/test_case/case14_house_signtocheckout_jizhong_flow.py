@@ -45,11 +45,12 @@ class SignToCheckout(unittest.TestCase):
         #                                           num1=3, mendian='江大门店', saleman='张爱东', fapiao='No'
         #                                           )
         # 生产环境-UI自动化测试-1栋
-        self.houseStatus.house_status_flow(data.community_jizhong_ui, data.loudong_name_jizhong_01,
-                                           data.user_01, data.rent_time_1, method='月付',
-                                           fee1='物业费',zhouqi1='一次性', day=1, addmoney1='1000', furniture1='家电',
+        self.houseStatus.house_status_flow(community=data.community_jizhong_ui, loudong=data.loudong_name_jizhong_01,
+                                           no=data.room_no_1001, customer=data.user_01, rent_time=data.rent_time_1,
+                                           method='月付',
+                                           fee1='物业费', zhouqi1='一次性', day=1, addmoney1=data.fee_1000, furniture1='家电',
                                            model1='电冰箱',num1=1, mendian='测试门店1', saleman='用户四',
-                                           fapiao='No',no='1001')
+                                           fapiao='No')
         date_now = str(date.today())
         self.houseStatus.bill_plan_page_check(total_money=21860.0,d1=date_now,money1=21860.00,date1=date_now,
                                               fe1=60.00,fe2=1000.00,fe3=9900.00,fe4=9900.00,fe5=1000.00
