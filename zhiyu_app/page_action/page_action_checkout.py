@@ -127,19 +127,16 @@ class CheckOut(object):
                 print e
                 print '费用结算页，费用输入有误或者压根没输进去！'
                 # assert True is False
-        if tag == 0:
-            assert True is False
-        # if int(text) == 10:
-        #     pass
-        # else:
-        #     print '费用结算页，费用输入有误或者压根没输进去！'
-        #     assert True is False
-        self.pm.click_by_ids(self.pc.checkout_fee, 1)
-        self.pm.send_keys_by_ids(self.pc.checkout_fee, -50, 1)
-        self.pm.click_by_ids(self.pc.checkout_fee, 2)
-        self.pm.send_keys_by_ids(self.pc.checkout_fee, -800, 2)
-        self.pm.click_by_ids(self.pc.checkout_fee, 3)
-        self.pm.send_keys_by_ids(self.pc.checkout_fee, -5000, 3)
+        # if tag == 0:
+        #     self.pm.assert_true_is_false()
+        if tag == 1:
+            self.pm.click_by_ids(self.pc.checkout_fee, 1)
+            self.pm.send_keys_by_ids(self.pc.checkout_fee, -50, 1)
+            self.pm.click_by_ids(self.pc.checkout_fee, 2)
+            self.pm.send_keys_by_ids(self.pc.checkout_fee, -800, 2)
+            self.pm.click_by_ids(self.pc.checkout_fee, 3)
+            self.pm.send_keys_by_ids(self.pc.checkout_fee, -5000, 3)
+        return tag
 
     # 费用结算页-费用检查1期1付
     def check_fee(self,status_jiesuan,money_tui):
@@ -312,6 +309,7 @@ class CheckOut(object):
         self.judge_title()
         self.click_fix()
         self.select_fix_online(item, reason)
+
         self.click_bill()
         self.judge_fee_close()
         self.select_checkout_way()
@@ -321,7 +319,22 @@ class CheckOut(object):
         # 检查日期金额是否正确
         self.check_time_money(sign_n, rent_n)
         self.pm.screenSlide_by_zuobiao(300.0, 1600.0, 300.0, 400.0, 1080.0, 1920.0)
-        self.add_fee()
+        tag = self.add_fee()
+        if tag == 0:
+            self.click_back()
+            self.click_bill()
+            self.judge_fee_close()
+            self.select_checkout_way()
+            self.checkout_rent_status(status)
+            # self.add_fees(fee)
+            # self.add_fee_money(money)
+            # 检查日期金额是否正确
+            self.check_time_money(sign_n, rent_n)
+            self.pm.screenSlide_by_zuobiao(300.0, 1600.0, 300.0, 400.0, 1080.0, 1920.0)
+            tag = self.add_fee()
+            if tag == 0:
+                self.pm.assert_true_is_false()
+
         self.pm.screenSlide_by_zuobiao(300.0, 1600.0, 300.0, 400.0, 1080.0, 1920.0)
         self.check_fee_jizhong(status_jiesuan, money_tui)
         # self.swip_screen()

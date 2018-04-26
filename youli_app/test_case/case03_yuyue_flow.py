@@ -28,7 +28,7 @@ class YuYue(unittest.TestCase):
         self.home.click_zhengzu()
         self.list.fangyuan_list_flow(data.two_house, data.one_house, data.mangguo, data.address,
                                      data.address_qu_chaoyang, data.address_jiedao_maizi, data.zhuangxiu_haohua,
-                                     data.house_name_02)
+                                     data.house_name_04)
         self.detail.yuyue_page_flow()
 
 
