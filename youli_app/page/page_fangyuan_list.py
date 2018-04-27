@@ -30,6 +30,9 @@ choose_name = 'tv_name'  # 品牌公寓元素id
 location_middle = 'tv_middle_name'  # 位置元素id
 location_right = 'tv_right_name'
 
+fangyuan_search = 'tv_search_name'
+fangyuan_search_02 = 'et_search'
+
 
 
 

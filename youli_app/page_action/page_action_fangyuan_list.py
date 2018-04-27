@@ -3,12 +3,14 @@
 from public import public_method
 from ..page import page_fangyuan_list
 from test_data import data
+import time
 
 
 class FangyuanList(object):
     def __init__(self, driver):
         self.driver = driver
         self.pm = public_method.PublicMethod(self.driver)
+        self.im = public_method.InputMethod()
 
     def click_confirm(self):
         self.pm.click_by_name(page_fangyuan_list.confirm)
@@ -113,6 +115,13 @@ class FangyuanList(object):
             print r, '装修情况不存在！'
             assert True is False
 
+    # 搜索房源
+    def click_search_house(self):
+        self.pm.click_by_id(page_fangyuan_list.fangyuan_search)
+
+    def input_search_house(self, r):
+        self.pm.send_keys_by_id(page_fangyuan_list.fangyuan_search_02, r)
+
     # 滑动屏幕直到找到这个房源
     def find_click_fangyuan(self, r):
         for i in range(10):
@@ -143,9 +152,12 @@ class FangyuanList(object):
         self.click_confirm()
         self.find_click_fangyuan(house)
 
-    def zhengzu_flow(self, house):
+    def zhengzu_flow(self, keyword, community, house):
         self.judge_fangyuanlist_page()
-        self.find_click_fangyuan(house)
+        self.click_search_house()
+        self.input_search_house(keyword)
+        self.pm.click_by_name(community)
+        self.pm.click_by_name(house)
 
     def judge_zhengzu_list(self):
         tag = 0

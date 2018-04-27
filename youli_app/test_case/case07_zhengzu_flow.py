@@ -26,7 +26,7 @@ class ZhengZu(unittest.TestCase):
         self.home.click_tab_wode()
         self.login.login_judge(data.user, data.pwd)
         self.home.click_zhengzu()
-        self.list.zhengzu_flow(data.house_name_01)
+        self.list.zhengzu_flow(data.key_word, data.community_name_ui_fs, data.house_name_01)
         self.detail.yuyue_page_flow()
 
 

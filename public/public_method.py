@@ -378,7 +378,9 @@ class PublicMethod(object):
         self.d.press_keycode(m, n)
 
     def presscode(self, i):
-        self.d.press_keycode(i)  # 84是搜索按键
+        time.sleep(3)
+        self.d.press_keycode(i)  # 84是搜索按键  66是回车键
+        time.sleep(3)
 
     def clear_keycode(self, element):  # 模拟键盘清空输入框- 删除键 112
         element.click()
@@ -471,8 +473,39 @@ class DataBase(object):
         return code
 
 
+"""
+切换输入法
+"""
 
 
+class InputMethod(object):
+    def __init__(self):
+        # 列出所有的输入法
+        self.commond_0 = 'adb shell ime list -s'
+        # 查看默认的输入法
+        self.commond_1 = 'adb shell settings get secure default_input_method'
+        # 切换到华为百度输入法
+        self.commond_2 = 'adb shell ime set com.baidu.input_huawei/.ImeService'
+        # 切换到appium输入法
+        self.commond_3 = 'adb shell ime set io.appium.android.ime/.UnicodeIME'
+        # 切换到安卓默认输入法
+        self.commond_4 = 'adb shell ime set com.android.inputmethod.latin/.LatinIME'
+
+    def input_method_appium(self):
+        # appium自带的输入法
+        time.sleep(3)
+        os.system(self.commond_3)
+        time.sleep(3)
+
+    def input_method_baidu(self):
+        # 百度输入法
+        time.sleep(3)
+        os.system(self.commond_2)
+        time.sleep(3)
+
+    def input_method_android(self):
+        # 安卓默认输入法
+        os.system(self.commond_4)
 
 
 
